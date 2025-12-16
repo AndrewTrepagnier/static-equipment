@@ -15,9 +15,7 @@ struct Parameters {
 }
 
 fn main() {
-    // ========================================
-    // INPUT PARAMETERS - EDIT THESE VALUES
-    // ========================================
+   
     let params = Parameters {
         t_process: 400.0,  // Process temperature (°F)
         t_0: 70.0,         // Initial temperature (°F)
@@ -32,14 +30,14 @@ fn main() {
         wb: 0.079,         // Weld bead depth (in) - SMAW=0.079, GTAW=0.039
     };
     
-    // Run calculations
+    
     let h_net = calculate_net_heat_input(params.f, params.e, params.i, params.v);
     let haz = calculate_haz_penetration(h_net, params.rho_c, params.h, params.t_0, params.t_m, params.cpt);
     let total_penetration = haz + params.wb;
     let t_inside = peak_temperature(params.h, h_net, params.rho_c, params.h, params.t_m, params.t_0);
     let safe_to_weld = total_penetration < params.h;
     
-    // Print results
+    
     print_results(&params, h_net, haz, total_penetration, t_inside, safe_to_weld);
 }
 
@@ -87,13 +85,13 @@ fn print_results(params: &Parameters, h_net: f64, haz: f64, total_penetration: f
     
     println!("\n{}", "=".repeat(60));
     if safe_to_weld {
-        println!("✓ PASS: Welding operation is feasible");
-        println!("  Critical peak temperature does NOT reach inside wall");
+        println!(" PASS: Welding operation is feasible");
+        println!("  Critical peak temperature does not reach inside wall");
         let margin = params.h - total_penetration;
         println!("  Safety Margin: {:.4} in ({:.2}%)", margin, (margin / params.h) * 100.0);
     } else {
-        println!("✗ FAIL: Welding operation is NOT feasible");
-        println!("  Critical peak temperature REACHES inside wall");
+        println!(" FAIL: Welding operation is not feasible");
+        println!("  Critical peak temperature reaches inside wall");
         let exceedance = total_penetration - params.h;
         println!("  Exceedance: {:.4} in", exceedance);
     }

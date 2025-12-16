@@ -3,8 +3,6 @@
 **/*.rs.bk
 *.pdb
 
-# Cargo lock file (optional for binaries, but can be regenerated)
-# Cargo.lock
 
 # Generated output files
 *.png
