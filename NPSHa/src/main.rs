@@ -60,5 +60,27 @@ fn main(){
 	}
 
 
+
+fn F_to_K(F_temp: f64)->f64{
+	((F_temp - 32)*5/9 + 273.15);
+}
+
+
+fn log_P(){
+
+}
+
+fn compositions_pressures(){
+
+}
+
+fn vapor_pressure_mixture(){
+
+}
+
+
+
+
+
 	
 }
