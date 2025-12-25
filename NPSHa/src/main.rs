@@ -66,7 +66,8 @@ fn F_to_K(F_temp: f64)->f64{
 }
 
 
-fn log_P(){
+fn log_P(A:f64, B:f64, C:f64, Temp:f64)->f64{
+	(A - (B)/(Temp + C));
 
 }
 
