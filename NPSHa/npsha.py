@@ -67,19 +67,12 @@ if __name__ == "__main__":
     
     total_vapor_pressure_psi = total_vapor_pressure_bar * BAR_TO_PSI
 
-    npsha_upper = NPSHA("upper")
-    npsha_lower = NPSHA("lower")
+    npsha_calc = NPSHA()
 
     print(f"Antoine pressures (bar): {antonine_pressures}")
     print(f"Total vapor pressure: {total_vapor_pressure_bar:.4f} bar = {total_vapor_pressure_psi:.4f} psi")
-    print(f"hp:  {npsha_upper.hp():.4f} ft")
-    print(f"hst: {npsha_upper.hst:.4f} ft")
-    print(f"hfs: {npsha_upper.hfs:.4f} ft")
-    print()
-    print(f"UPPER (Pvap = {npsha_upper.Pvap} psi):")
-    print(f"  hvpa:  {npsha_upper.hvpa():.4f} ft")
-    print(f"  NPSHa: {npsha_upper.npsha():.4f} ft")
-    print()
-    print(f"LOWER (Pvap = {npsha_lower.Pvap} psi):")
-    print(f"  hvpa:  {npsha_lower.hvpa():.4f} ft")
-    print(f"  NPSHa: {npsha_lower.npsha():.4f} ft")
+    print(f"hp:   {npsha_calc.hp():.4f} ft")
+    print(f"hst:  {npsha_calc.hst:.4f} ft")
+    print(f"hfs:  {npsha_calc.hfs:.4f} ft")
+    print(f"hvpa: {npsha_calc.hvpa(total_vapor_pressure_psi):.4f} ft")
+    print(f"NPSHa = hp + hst - hfs - hvpa = {npsha_calc.npsha(total_vapor_pressure_psi):.4f} ft")
