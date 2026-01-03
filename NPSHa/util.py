@@ -4,7 +4,7 @@ import numpy as np
 
 
 @dataclass
-class ANTONINE_COEFFICIENTS:
+class ANTOINE_COEFFICIENTS:
 
     name: str
 
