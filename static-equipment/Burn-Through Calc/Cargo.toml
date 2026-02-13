@@ -1,7 +1,0 @@
-[package]
-name = "burn-through-calc"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-
